@@ -1,0 +1,22 @@
+Source: https://github.com/microsoft/WSL/issues/4103
+
+
+If after installing linux distribution and trying to run gives error:
+
+Installing, this may take a few minutes...
+WslRegisterDistribution failed with error: 0xc03a001a
+Error: 0xc03a001a The requested operation could not be completed due to a virtual disk system limitation.  Virtual hard disk files must be uncompressed and unencrypted and must not be sparse.
+
+
+run this and reboot:
+
+fsutil behavior set disableencryption 1
+fsutil behavior set disablecompression 1
+
+
+You may also need to change folder attributes in the distribution localstate folder:
+
+C:\Users\<USER_NAME>\AppData\Local\Packages\<_DISTRO_NAME>\LocalState
+example:
+C:\Users\me\AppData\Local\Packages\TheDebianProject.DebianGNULinux_76v4gfsz19hv4\LocalState
+
